@@ -10,9 +10,9 @@ export class LoginComponent {
   data="your perfect banking partner"
   inputplaceholder="account number"
   
-  // acno=''
+  acno=''
   // or acno:any
-  // psw=''
+  psw=''
 
   userDetails:any={
     1000:{acno:1000,username:"anu",password:"abc123",balance:0},
@@ -28,23 +28,24 @@ export class LoginComponent {
 
   }
 
-  // login(){
-  //   //  alert('login clicked')
-  //   var acnum=this.acno //to make the code shorter
-  //   var psw=this.psw
-  //   var userDetails=this.userDetails
-  //   if(acnum in userDetails){
-  //     if(psw==userDetails[acnum]["password"]){  //acnum is a variable. so no quotes. but password is a keyword. so give in quotes.
-  //     alert("login success")
-  //     }
-  //     else{
-  //       alert("incorrect password!")
-  //     }
-  //   }
-  //   else{
-  //  alert("acno incorrect or not registered yet!")
-  //   }                                             
-  // }
+  login(){
+    //  alert('login clicked')
+    var acnum=this.acno //to make the code shorter
+    var psw=this.psw
+    var userDetails=this.userDetails
+    if(acnum in userDetails){
+      if(psw==userDetails[acnum]["password"]){  //acnum is a variable. so no quotes. but password is a keyword. so give in quotes.
+      alert("login success")
+      }
+      else{
+        alert("incorrect password!")
+      }
+    }
+    
+    else{
+   alert("acno incorrect or not registered yet!")
+    }                                             
+  }
 
 //   acnoChange(event:any){
 //   this.acno=event.target.value;
@@ -57,22 +58,22 @@ export class LoginComponent {
 //    }
  // }
 
- login(a:any,b:any){
- // console.log(a.value);
- var acnum=a.value
- var psw=b.value
+//  login(a:any,b:any){
+//  // console.log(a.value);
+//  var acnum=a.value  //chkd thru console log and understood that .value needs to be added.
+//  var psw=b.value
   
-  var userDetails=this.userDetails
-  if(acnum in userDetails){
-    if(psw==userDetails[acnum]["password"]){  //acnum is a variable. so no quotes. but password is a keyword. so give in quotes.
-    alert("login success")
-    }
-    else{
-      alert("incorrect password!")
-    }
-  }
-  else{
- alert("acno incorrect or not registered yet!")
-  }                                             
-}
+//   var userDetails=this.userDetails
+//   if(acnum in userDetails){
+//     if(psw==userDetails[acnum]["password"]){  //acnum is a variable. so no quotes. but password is a keyword. so give in quotes.
+//     alert("login success")
+//     }
+//     else{
+//       alert("incorrect password!")
+//     }
+//   }
+//   else{
+//  alert("acno incorrect or not registered yet!")
+//   }                                             
+// }
 }

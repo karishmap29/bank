@@ -2,8 +2,8 @@
 <div class="login">
     <h3 style="margin-bottom:40px; font-size: 40px;color:rgba(46, 51, 59, 0.721);font-weight: 600;" >Login</h3>
     <form action="">
-       <span><i class="fa fa-user"></i> <input type="text" #acno id="a1" name="acnum1" [placeholder]="inputplaceholder"></span><br>
-        <span><i class="fa fa-lock"></i><input type="password" #psw id="p1" name="paswrd1" placeholder="password"></span><br>
-        <button type="button" (click)="login(acno,psw)">Login</button>
+       <span><i class="fa fa-user"></i> <input type="text" [(ngModel)]="acno" id="a1" name="acnum1" [placeholder]="inputplaceholder"></span><br>
+        <span><i class="fa fa-lock"></i><input type="password" [(ngModel)]="psw"  id="p1" name="paswrd1" placeholder="password"></span><br>
+        <button type="button" (click)="login()">Login</button>
     </form>
 </div>
