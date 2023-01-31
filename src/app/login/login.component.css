@@ -1,0 +1,41 @@
+.login{
+width: 23%;
+margin: 20px;
+padding: 10px;
+margin-left: 75%;
+margin-top: 8%;
+background-color: rgba(255,255,255,0.4);
+text-align: center;
+border-radius: 10%;
+}
+span{
+    position: relative;
+    
+}
+span i{
+    position: absolute;
+    left: 18px;
+    top: 5px;
+}
+#a1, #p1{
+    width: 80%;
+    padding: 10px;
+    padding-left: 40px;
+    margin-bottom: 20px; 
+    border: none;
+    border-radius: 10px;
+}
+button{
+    background-color: transparent;
+    /* border: white; */
+    padding: 10px;
+    margin: 20px;
+    border-color: white;
+    border-radius: 20%;
+    color: rgba(9, 16, 26, 0.721);
+    font-weight: 500;
+}
+button:hover{
+    transform: scale(1.1,1.1);
+    background-color: rgba(250, 235, 215, 0.329);
+}
