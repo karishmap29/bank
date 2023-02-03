@@ -1,9 +1,9 @@
 <div class="reg">
     <h3 style="margin-bottom:40px; font-size: 40px;color:rgba(46, 51, 59, 0.721);font-weight: 600;" >Sign Up</h3>
-    <form action="">
-        <input type="text" id="u2" name="usernum1" placeholder="Username">
-        <input type="text" id="a2" name="acnum1" placeholder="account no"><br>
-        <input type="password"   id="p2" name="pswrd1"  placeholder="password"><br>
-        <button type="button" (click)="register()" >Sign Up</button>
+    <form action="" (ngSubmit)="register()">
+        <input type="text" id="u2" [(ngModel)]="uname" name="usernum1" placeholder="Username">
+        <input type="text" id="a2" name="acnum1" [(ngModel)]="acno"  placeholder="account no"><br>
+        <input type="password"   id="p2" name="pswrd1" [(ngModel)]="psw" placeholder="password"><br>
+        <button type="submit"  >Sign Up</button>
     </form>
 </div>

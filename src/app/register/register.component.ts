@@ -1,6 +1,8 @@
 import { registerLocaleData } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../services/data.service';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-register',
@@ -8,8 +10,12 @@ import { DataService } from '../services/data.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit{
-
- constructor(private ds:DataService){
+  [x: string]: any;
+ acno=''
+ uname=''
+ psw=''
+  
+ constructor(private ds:DataService,private router:Router){
 
  }
  ngOnInit():void{
@@ -17,8 +23,20 @@ export class RegisterComponent implements OnInit{
  }
 
   register(){
+
+    var uname=this.uname
+    var acno=this.acno
+    var psw=this.psw
+   //console.log(uname,acno,psw);
+    const result=this.ds.register(uname,acno,psw)
     
-    let userDetails=this.ds.userDetails
+    if(result){
+      alert('registered')
+      this.router.navigateByUrl("")
+    }
+    else{
+      alert("acno already registered")
+    }
     }
     
 }

@@ -28,20 +28,16 @@ export class LoginComponent {
     //  alert('login clicked')
     var acnum=this.acno //to make the code shorter
     var psw=this.psw
-    var userDetails=this.ds.userDetails
-    if(acnum in userDetails){
-      if(psw==userDetails[acnum]["password"]){  //acnum is a variable. so no quotes. but password is a keyword. so give in quotes.
-      alert("login success")
-      this.router.navigateByUrl('dashboard')
-      }
-      else{
-        alert("incorrect password!")
-      }
-    }
-    
-    else{
-   alert("acno incorrect or not registered yet!")
-    }                                             
+
+   const result= this.ds.login(acnum,psw)
+   if(result){
+    alert('login success')
+    this.router.navigateByUrl('dashboard')
+   }
+   else{
+    alert('incorrect acno or password')
+   }
+                                         
   }
 
 //   acnoChange(event:any){
