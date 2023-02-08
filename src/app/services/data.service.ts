@@ -8,11 +8,12 @@ export class DataService {
   constructor() { }
 
   currentUser={}
+  currentAcno:any
   userDetails:any={
-    1000:{acno:1000,username:"anu",password:"abc123",balance:0},
-    1001:{acno:1001,username:"amal",password:"abc123",balance:0},
-    1002:{acno:1002,username:"arun",password:"abc123",balance:0},
-    1003:{acno:1003,username:"akil",password:"abc123",balance:0}
+    1000:{acno:1000,username:"anu",password:"abc123",balance:0,transaction:[]},
+    1001:{acno:1001,username:"amal",password:"abc123",balance:0,transaction:[]},
+    1002:{acno:1002,username:"arun",password:"abc123",balance:0,transaction:[]},
+    1003:{acno:1003,username:"akil",password:"abc123",balance:0,transaction:[]}
 
   }
 
@@ -31,10 +32,12 @@ export class DataService {
     var userDetails=this.userDetails
 
     if(acno in userDetails){
-      if(psw==userDetails[acno]["password"]){  //acnum is a variable. so no quotes. but password is a keyword. so give in quotes.
+      if(psw==userDetails[acno]["password"]){  //acno is a variable. so no quotes. but password is a keyword. so give in quotes.
         this.currentUser=userDetails[acno]["username"]
-        console.log(this.currentUser);
+        //console.log(this.currentUser);
         
+        this.currentAcno=acno
+
         return true
     
       }
@@ -46,4 +49,76 @@ export class DataService {
         return false
       }  
   }
+
+  deposit(acnum:any,password:any,amount:any){
+    let userDetails=this.userDetails
+    //convert string amount to number
+    var amnt=parseInt(amount) //amnt is taken from input. hence it will be string type. to do mathematical operations we need to convert to int.
+
+    if(acnum in userDetails){
+      if(password==userDetails[acnum]["password"]){
+
+        //update balance
+       userDetails[acnum]["balance"]+=amnt
+
+       //transaction data store
+
+       userDetails[acnum]["transaction"].push({Type:"CREDIT",amount:amnt})
+
+       //return current balance
+       return userDetails[acnum]["balance"]
+
+      }
+      else{
+        return false
+      }
+    }
+    else{
+      return false
+    }
+  }
+
+  withdraw(acnum:any,password:any,amount:any){
+    let userDetails=this.userDetails
+    //convert string amount to number
+    var amnt=parseInt(amount)
+
+    if(acnum in userDetails){
+      if(password==userDetails[acnum]["password"]){
+       if(amnt<=userDetails[acnum]["balance"]){
+
+       
+        //update balance
+       userDetails[acnum]["balance"]-=amnt
+
+       //transaction data store
+
+       userDetails[acnum]["transaction"].push({Type:"DEBIT",amount:amnt})
+//console.log(userDetails);
+
+
+       //return current balance
+       return userDetails[acnum]["balance"]
+       }
+       else{
+        alert('Insufficient balance')
+        return false
+
+       }
+
+      }
+      else{
+        alert('Incorrect password!')
+        return false
+      }
+    }
+    else{
+      alert('Incorrect acno or password')
+      return false
+    }
+  }
+  getTransaction(acno:any){
+     return this.userDetails[acno]["transaction"]
+  }
+
 }
