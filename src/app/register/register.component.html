@@ -1,11 +1,26 @@
 <div class="reg">
     <h3 style="margin-bottom:40px; font-size: 40px;color:rgba(46, 51, 59, 0.721);font-weight: 600;" >Sign Up</h3>
-    <form [formGroup]="registerForm" action="" (ngSubmit)="register()">
+    <form action="" [formGroup]="registerForm" (ngSubmit)="register()">
         <input formControlName="uname" type="text" id="u2"  name="usernum1" placeholder="Username">
+        <div *ngIf="this.registerForm.get('uname')?.errors && this.registerForm.get('uname')?.touched ">
+            <p class="text-danger" style="font-size:12px ;">Invalid Username</p>
+        </div>
         <input  formControlName="acno" type="text" id="a2" name="acnum1"   placeholder="account no"><br>
+        <div *ngIf="this.registerForm.get('acno')?.errors && this.registerForm.get('acno')?.touched ">
+            <p class="text-danger"style="font-size:12px ;">Must contain only numbers!</p>
+        </div>
+
         <input  formControlName="psw" type="password"   id="p2" name="pswrd1" placeholder="password"><br>
+        <div *ngIf="this.registerForm.get('psw')?.errors && this.registerForm.get('psw')?.touched ">
+            <p class="text-danger" style="font-size:12px ;">Invalid Password</p>
+        </div>
+
         <button type="submit"  >Sign Up</button>
     </form>
 </div>
 
 
+<!-- [formGroup]="registerForm"
+formControlName="uname"
+  formControlName="acno"
+formControlName="psw"-->

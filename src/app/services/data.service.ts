@@ -22,8 +22,8 @@ export class DataService {
     return false
   }
   else{
-    this.userDetails[acno]={acno,username:uname,password:psw,balance:0}
-    //console.log(this.userDetails);
+    this.userDetails[acno]={acno,username:uname,password:psw,balance:0,transaction:[]}
+    console.log(this.userDetails);
      return true
   }
   }
@@ -99,6 +99,8 @@ export class DataService {
 
        //return current balance
        return userDetails[acnum]["balance"]
+       console.log(this.userDetails);
+       
        }
        else{
         alert('Insufficient balance')

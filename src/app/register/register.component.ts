@@ -19,11 +19,11 @@ export class RegisterComponent implements OnInit{
 
  }
 
-  // c,[Validators.required,Validators.pattern('[0-9]')]reate reactive form of register form
+  // create reactive form of register form
   registerForm=this.fb.group({
   acno:['',[Validators.required,Validators.pattern('[0-9]+')]],     //obj hence key-value pair  //value must be array itself.cant give as any.we can validate using string itself.
   uname:['',[Validators.required,Validators.pattern('[a-zA-Z]+')]],
-  psw:['',,[Validators.required,Validators.pattern('[0-9a-zA-Z]+')]]
+  psw:['',[Validators.required,Validators.pattern('[0-9a-zA-Z]+')]]
   })
 
  ngOnInit():void{
@@ -53,9 +53,9 @@ alert('invalid form')
     }
   }
 
-    
 }
 
 
 
 
+ 

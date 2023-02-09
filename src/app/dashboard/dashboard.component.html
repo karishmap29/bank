@@ -8,10 +8,10 @@
     <div class="col-lg-5 col-md-12 text-center mt-5 p-3  rounded me-5 ms-5 " style="background-color: rgba(255,255,255,0.4);">
         <h4 class="m-4">Deposit</h4>
         <div class="">
-            <form action="">
-                <input type="text" [(ngModel)]="acno1" id="a1" name="acnum1" placeholder="account number" class="form-control m-2 w-75 ms-5">
-                <input type="password" [(ngModel)]="psw1" id="p1" name="psw1" placeholder="password" class="form-control m-2 w-75 ms-5" >
-                <input type="text" [(ngModel)]="amnt1" id="d1" name="amt1" placeholder="amount" class="form-control m-2 w-75 ms-5" >
+            <form action="" [formGroup]="depositForm">
+                <input type="text" formControlName="acno1" id="a1" name="acnum1" placeholder="account number" class="form-control m-2 w-75 ms-5">
+                <input type="password" formControlName="psw1" id="p1" name="psw1" placeholder="password" class="form-control m-2 w-75 ms-5" >
+                <input type="text" formControlName="amnt1" id="d1" name="amt1" placeholder="amount" class="form-control m-2 w-75 ms-5" >
                 <button type="submit" (click)="deposit()" class="btn btn-info ">Deposit</button>
     
             </form>
@@ -20,10 +20,10 @@
     <div class="col-lg-5 col-md-12 text-center mt-5 p-3  rounded ms-5 " style="background-color: rgba(255,255,255,0.4);">
         <h4 class="m-4">Withdraw</h4>
         <div class="">
-            <form action="">
-                <input type="text" [(ngModel)]="acno2" id="a2" name="acnum2" placeholder="account number" class="form-control m-2 w-75 ms-5">
-                <input type="password" [(ngModel)]="psw2" id="p2" name="psw2" placeholder="password" class="form-control m-2 w-75 ms-5" >
-                <input type="text" [(ngModel)]="amnt2" id="d2" name="amt2" placeholder="amount" class="form-control m-2 w-75 ms-5" >
+            <form action=""[formGroup]="withdrawForm">
+                <input type="text" formControlName="acno2" id="a2" name="acnum2" placeholder="account number" class="form-control m-2 w-75 ms-5">
+                <input type="password" formControlName="psw2" id="p2" name="psw2" placeholder="password" class="form-control m-2 w-75 ms-5" >
+                <input type="text" formControlName="amnt2" id="d2" name="amt2" placeholder="amount" class="form-control m-2 w-75 ms-5" >
                 <button type="submit" (click)="withdraw()" class="btn btn-info">Withdraw</button>
     
             </form>

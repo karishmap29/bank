@@ -1,10 +1,11 @@
 <h5 class="m-3 ms-4">{{data}}</h5>
 <div class="login">
     <h3 style="margin-bottom:40px; font-size: 40px;color:rgba(46, 51, 59, 0.721);font-weight: 600;" >Login</h3>
-    <form action=""(ngSubmit)="login()">
-       <span><i class="fa fa-user"></i> <input type="text" [(ngModel)]="acno" id="a1" name="acnum1" [placeholder]="inputplaceholder"></span><br>
-        <span><i class="fa fa-lock"></i><input type="password" [(ngModel)]="psw"  id="p1" name="paswrd1" placeholder="password"></span><br>
+    <form action=""[formGroup]="loginForm" (ngSubmit)="login()">
+       <span><i class="fa fa-user"></i> <input formControlName="acno" type="text" id="a1" name="acnum1" [placeholder]="inputplaceholder"></span><br>
+        <span><i class="fa fa-lock"></i><input formControlName="psw" type="password"  id="p1" name="paswrd1" placeholder="password"></span><br>
         <button type="submit">Login</button>
         <div class="text-center " style="color:rgba(15, 15, 17, 0.721);font-size: 13px;">Not Registered?<a style="text-decoration: none;color:black;"  routerLink="register">Register Here</a></div>
     </form>
 </div>
+
