@@ -3,3 +3,9 @@ body{
     background-image: url("./assets/Digital-only-banking-incumbents-copy-challengers.jpg");
     background-size: cover;
 }
+
+.style{
+    opacity: 0; 
+    /* to make invisible */
+    
+}

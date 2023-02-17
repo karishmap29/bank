@@ -26,7 +26,7 @@ export class LoginComponent {
   loginForm=this.fb.group({
    acno:['',[Validators.required,Validators.pattern('[0-9]+')]],
    psw:['',[Validators.required,Validators.pattern('[0-9a-zA-Z]+')]]  
-  })
+  })  //+ used for min 1 and max any      *used when min 0
   ngOnInit(): void {
 
   }

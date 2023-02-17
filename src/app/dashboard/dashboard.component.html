@@ -1,17 +1,22 @@
-<div class="text-end">
-    <button class="btn btn-danger text-light mt-2 me-2 ">Delete account</button>
-    <button class="btn btn-dark text-light mt-2 me-2 ">Logout</button>
+
+<div class="text-black text-center  ">
+<h2 style="font-size: 12px;">{{datedetails| date: 'short'}}</h2>
+</div>
+    <div class="text-end">
+    <button class="btn btn-danger text-light mt-2 me-2 " (click)="deleteParent()">Delete account</button>
+    <button (click)="logout()" class="btn btn-dark text-light mt-2 me-2 ">Logout</button>
 
 </div>  
 <div>
     <h3 class="text-center  ">Welcome {{user}}</h3>
 </div>
 
-<div class="p-2 w-25 mt-3 container text-center  border border-light rounded-pill " style=" background-color:rgba(255,255,255,0.4) ;">
+<div [ngClass]="acno?'style':'' " class="p-2 w-25 mt-3 container text-center  border border-light rounded-pill " style=" background-color:rgba(255,255,255,0.4) ;">
     <a style=" text-decoration: none;color: black;" routerLink="/transaction">View Transaction History</a>
 </div>
+<app-deleteconfirm (oncancel)="cancel()" [item]="acno"></app-deleteconfirm>
 
-<div class="row m-2">
+<div [ngClass]="acno?'style':'' " class="row m-2">
     <div class="col-lg-5 col-md-12 text-center mt-3 p-3  rounded me-5 ms-5 " style="background-color: rgba(255,255,255,0.4);">
         <h4 class="m-4">Deposit</h4>
         <div class="">

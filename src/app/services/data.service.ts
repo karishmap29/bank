@@ -23,7 +23,7 @@ export class DataService {
 
   saveData(){
     if(this.userDetails){
-      localStorage.setItem("database",JSON.stringify(this.userDetails))
+      localStorage.setItem("database",JSON.stringify(this.userDetails)) //userdetails is in ts obj.so we have to convert to string
     }
     if(this.currentUser){
       localStorage.setItem("currentUser",this.currentUser)
