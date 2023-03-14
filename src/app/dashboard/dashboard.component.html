@@ -14,7 +14,7 @@
 <div [ngClass]="acno?'style':'' " class="p-2 w-25 mt-3 container text-center  border border-light rounded-pill " style=" background-color:rgba(255,255,255,0.4) ;">
     <a style=" text-decoration: none;color: black;" routerLink="/transaction">View Transaction History</a>
 </div>
-<app-deleteconfirm (oncancel)="cancel()" [item]="acno"></app-deleteconfirm>
+<app-deleteconfirm (onDelete)="Delete($event)" (oncancel)="cancel()" [item]="acno"></app-deleteconfirm>
 
 <div [ngClass]="acno?'style':'' " class="row m-2">
     <div class="col-lg-5 col-md-12 text-center mt-3 p-3  rounded me-5 ms-5 " style="background-color: rgba(255,255,255,0.4);">

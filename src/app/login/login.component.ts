@@ -36,20 +36,27 @@ export class LoginComponent {
     var acnum=this.loginForm.value.acno //to make the code shorter
     var psw=this.loginForm.value.psw 
     if(this.loginForm.valid){
-    const result= this.ds.login(acnum,psw)
-   if(result){
-    alert('login success')
-    this.router.navigateByUrl('dashboard')
-   }
-   else{
-    alert('incorrect acno or password')
-   }
+    this.ds.login(acnum,psw).subscribe((result:any)=>{
+      
+      localStorage.setItem("currentUser",JSON.stringify(result.currentUser) )
+      localStorage.setItem("currentAcno",JSON.stringify(result.currentAcno) )
+      localStorage.setItem("token",JSON.stringify(result.token) )
+
+      alert(result.message)
+      this.router.navigateByUrl('dashboard')
+    },
+    result =>{
+      alert(result.error.message)
+    }
+    )
+   
   }
   else{
     alert('invalid form')
   }
                                          
   }
+}
 
 //   acnoChange(event:any){
 //   this.acno=event.target.value;
@@ -80,4 +87,4 @@ export class LoginComponent {
 //  alert("acno incorrect or not registered yet!")
 //   }                                             
 // }
-}
+

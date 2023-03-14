@@ -13,23 +13,19 @@ export class DashboardComponent implements OnInit {
   acno:any
   datedetails:any
  
-  // acno1: any
-  // psw1: any
-  // amnt1: any
-
-  // acno2: any
-  // psw2: any
-  // amnt2: any
+  
 
   constructor(private ds: DataService, private fb: FormBuilder, private router: Router) {
-    this.user = this.ds.currentUser
+   if(localStorage.getItem("currentUser")){
+    this.user = JSON.parse(localStorage.getItem("currentUser")|| "")
+  }
     //access date
     this.datedetails= new Date()
 
   }
   
   ngOnInit(): void {
-     if(!localStorage.getItem("currentAcno")){
+     if(!localStorage.getItem("token")){
       alert("please login")
       this.router.navigateByUrl("") //redirecting to login page| login-logout-then if we press back this alert will come
      }
@@ -47,20 +43,18 @@ export class DashboardComponent implements OnInit {
     if (this.depositForm.valid) {
 
 
-      const result = this.ds.deposit(acno1, psw1, amnt1)
-      if (result) {
-        alert(`Your ac has been credited with amount ${amnt1} and the current balance is ${result}`)
-      }
-      else {
-        alert('acno or password is wrong!!')
-      }
+      this.ds.deposit(acno1, psw1, amnt1).subscribe((result:any)=>{
+        alert(result.message)
+      },
+       result=>{
+        alert(result.error.message)
+       }
+      )
+      
     }
     else {
       alert('invalid form')
     }
-    console.log(this.ds.userDetails);
-
-
   }
   withdrawForm = this.fb.group({
     acno2: ['', [Validators.required, Validators.pattern('[0-9]+')]],
@@ -69,17 +63,18 @@ export class DashboardComponent implements OnInit {
   })
 
   withdraw() {
-    var acno2 = this.withdrawForm.value.acno2
-    var psw2 = this.withdrawForm.value.psw2
-    var amnt2 = this.withdrawForm.value.amnt2
+    var acno = this.withdrawForm.value.acno2
+    var psw = this.withdrawForm.value.psw2
+    var amnt = this.withdrawForm.value.amnt2
     if (this.withdrawForm.valid) {
-
-
-      const result = this.ds.withdraw(acno2, psw2, amnt2)
-      if (result) {
-        alert(`Your ac has been debited with amount ${amnt2} and the current balance is ${result}`)
-      }
-    }
+    
+      this.ds.withdraw(acno, psw, amnt).subscribe((result:any)=>{
+        alert(result.message)
+      },
+      result=>{
+        alert(result.error.message)
+      })}
+      
     else {
       alert('invalid form')
     }
@@ -88,6 +83,7 @@ export class DashboardComponent implements OnInit {
   logout() {
     localStorage.removeItem("currentUser")
     localStorage.removeItem("currentAcno")
+    localStorage.removeItem("token")
     this.router.navigateByUrl("")
   }
  deleteParent(){
@@ -96,6 +92,13 @@ export class DashboardComponent implements OnInit {
 
 cancel(){
   this.acno=''
+}
+Delete(event:any){
+  //alert(event)
+  this.ds.deleacc(event).subscribe((result:any)=>{
+    alert(result.message)
+    this.logout()
+  })
 }
 
 }
